@@ -1,121 +1,147 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [email, setEmail] = useState('')
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [apiStatus, setApiStatus] = useState('checking')
+
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || ''
+
+  useEffect(() => {
+    const checkBackend = async () => {
+      try {
+        const response = await fetch(`${apiBaseUrl}/api/health`)
+        if (!response.ok) {
+          throw new Error('Backend health check failed')
+        }
+        setApiStatus('online')
+      } catch (_error) {
+        setApiStatus('offline')
+      }
+    }
+
+    checkBackend()
+  }, [apiBaseUrl])
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    setIsSubmitted(true)
+    setEmail('')
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+    <div className="page">
+      <header className="topbar">
+        <a href="/" className="logo">
+          GEM
+        </a>
+        <nav aria-label="Primary">
+          <ul className="nav-list">
+            <li>
+              <a href="/about">Meet the Team</a>
+            </li>
+            <li>
+              <a href="/programs">Programs & Services</a>
+            </li>
+            <li>
+              <a href="/timeline">Timeline</a>
+            </li>
+            <li>
+              <a href="/contact">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <section className="hero-section">
+          <p className="tagline">Girls Empowerment in STEM</p>
+          <p className="tagline">
+            Backend status:{' '}
+            {apiStatus === 'checking'
+              ? 'Checking...'
+              : apiStatus === 'online'
+                ? 'Online'
+                : 'Offline'}
           </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+          <h1>Inspiring the next generation of women in STEM.</h1>
+          <p className="hero-copy">
+            GEM helps girls discover confidence, community, and career pathways
+            through hands-on STEM experiences.
+          </p>
+          <div className="hero-actions">
+            <a href="/programs" className="button primary">
+              Explore Programs
+            </a>
+            <a href="/about" className="button secondary">
+              Our Story
+            </a>
+          </div>
+        </section>
 
-      <div className="ticks"></div>
+        <section className="stats-section" aria-label="Key statistics">
+          <article className="stat-card">
+            <h2>28%</h2>
+            <p>Women represent about 28% of the STEM workforce today.</p>
+          </article>
+          <article className="stat-card">
+            <h2>1 in 3</h2>
+            <p>Girls report reduced confidence in STEM by middle school.</p>
+          </article>
+          <article className="stat-card">
+            <h2>100%</h2>
+            <p>
+              Every GEM workshop is designed to be inclusive, hands-on, and
+              mentor-led.
+            </p>
+          </article>
+        </section>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        <section className="signup-section">
+          <div>
+            <h2>Stay connected</h2>
+            <p>
+              Sign up for GEM updates, event announcements, and opportunities to
+              get involved.
+            </p>
+          </div>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+          <form className="signup-form" onSubmit={handleSubmit}>
+            <label htmlFor="email">Email address</label>
+            <div className="signup-controls">
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder="you@example.com"
+                required
+              />
+              <button type="submit">Sign up</button>
+            </div>
+            {isSubmitted && (
+              <p className="success-message" role="status">
+                Thanks for joining the GEM community.
+              </p>
+            )}
+          </form>
+        </section>
+      </main>
+
+      <footer className="site-footer">
+        <p>
+          Contact us at{' '}
+          <a href="mailto:info@norcalrobotics.org">info@norcalrobotics.org</a>
+        </p>
+        <p>
+          Follow us on{' '}
+          <a href="https://instagram.com/norcalroboticsgem" target="_blank" rel="noreferrer">
+            @norcalroboticsgem
+          </a>
+        </p>
+      </footer>
+    </div>
   )
 }
 
