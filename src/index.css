@@ -4,10 +4,22 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  cursor: url('/cursor-64-thin.png') 50 8, auto;
+  overflow-x: hidden;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+a,
+button,
+input,
+textarea,
+select,
+label,
+[role='button'] {
+  cursor: url('/cursor-64-thin.png') 50 8, pointer;
 }

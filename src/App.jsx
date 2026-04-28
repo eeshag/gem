@@ -1,28 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 
 function App() {
   const [email, setEmail] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [apiStatus, setApiStatus] = useState('checking')
-
-  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || ''
-
-  useEffect(() => {
-    const checkBackend = async () => {
-      try {
-        const response = await fetch(`${apiBaseUrl}/api/health`)
-        if (!response.ok) {
-          throw new Error('Backend health check failed')
-        }
-        setApiStatus('online')
-      } catch (_error) {
-        setApiStatus('offline')
-      }
-    }
-
-    checkBackend()
-  }, [apiBaseUrl])
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -34,7 +15,7 @@ function App() {
     <div className="page">
       <header className="topbar">
         <a href="/" className="logo">
-          GEM
+          <img src="/gem-logo.png" alt="G.E.M. logo" className="logo-image" />
         </a>
         <nav aria-label="Primary">
           <ul className="nav-list">
@@ -55,16 +36,12 @@ function App() {
       </header>
 
       <main>
+        <section className="hero-banner" aria-label="GEM community">
+          <img src="/gem-logo.png" alt="G.E.M. logo" className="hero-banner-logo" />
+        </section>
+
         <section className="hero-section">
-          <p className="tagline">Girls Empowerment in STEM</p>
-          <p className="tagline">
-            Backend status:{' '}
-            {apiStatus === 'checking'
-              ? 'Checking...'
-              : apiStatus === 'online'
-                ? 'Online'
-                : 'Offline'}
-          </p>
+          <p className="tagline">Girls in Engineering and Management</p>
           <h1>Inspiring the next generation of women in STEM.</h1>
           <p className="hero-copy">
             GEM helps girls discover confidence, community, and career pathways

@@ -5,21 +5,31 @@
 }
 
 .topbar {
-  max-width: 1120px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   padding: 1.25rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(249, 245, 255, 0.92);
+  backdrop-filter: blur(6px);
 }
 
 .logo {
-  font-size: 1.2rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
-  color: #4c2a63;
+  line-height: 0;
+}
+
+.logo-image {
+  width: clamp(60px, 8vw, 90px);
+  height: auto;
+  display: block;
 }
 
 .nav-list {
@@ -48,10 +58,38 @@ main {
   gap: 2rem;
 }
 
+.hero-banner {
+  min-height: calc(100vh - 88px);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background-image:
+    linear-gradient(rgba(130, 82, 194, 0.3), rgba(86, 44, 146, 0.28)),
+    url('/home-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.hero-banner-logo {
+  width: clamp(190px, 38vw, 420px);
+  height: auto;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.45));
+}
+
+@media (max-width: 800px) {
+  .hero-banner {
+    min-height: 78vh;
+  }
+}
+
 .hero-section {
   background: #dfccfb;
   border-radius: 18px;
   padding: 2.5rem 2rem;
+  text-align: center;
 }
 
 .tagline {
@@ -71,6 +109,7 @@ main {
 
 .hero-copy {
   max-width: 50ch;
+  margin: 0 auto;
   color: #3a2a4a;
 }
 
@@ -79,6 +118,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
+  justify-content: center;
 }
 
 .button {
@@ -110,6 +150,11 @@ main {
   border: 1px solid #eadff4;
   border-radius: 14px;
   padding: 1.25rem;
+  text-align: center;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
 }
 
 .stat-card h2 {
@@ -121,6 +166,12 @@ main {
   margin: 0.65rem 0 0;
 }
 
+.stat-card:hover {
+  transform: translateY(-6px);
+  border-color: #cfb9e1;
+  box-shadow: 0 12px 24px rgba(76, 42, 99, 0.14);
+}
+
 .signup-section {
   background: #ffffff;
   border: 1px solid #eadff4;
@@ -128,6 +179,7 @@ main {
   padding: 1.5rem;
   display: grid;
   gap: 1rem;
+  text-align: center;
 }
 
 .signup-section h2 {
@@ -137,6 +189,7 @@ main {
 .signup-form {
   display: grid;
   gap: 0.65rem;
+  justify-items: center;
 }
 
 .signup-form label {
@@ -146,6 +199,7 @@ main {
 .signup-controls {
   display: flex;
   gap: 0.65rem;
+  width: min(100%, 520px);
 }
 
 .signup-controls input {
@@ -178,6 +232,7 @@ main {
   margin: 0 auto;
   padding: 0.5rem 1.5rem 2rem;
   color: #4c2a63;
+  text-align: center;
 }
 
 .site-footer a {
