@@ -258,3 +258,367 @@ main {
     flex-direction: column;
   }
 }
+
+/* —— Timeline page —— */
+
+.timeline-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.timeline-hero {
+  text-align: center;
+  background: #dfccfb;
+  border-radius: 18px;
+  padding: 2rem 1.5rem;
+}
+
+.timeline-hero h1 {
+  margin: 0.35rem 0 0.75rem;
+  font-size: clamp(1.85rem, 4vw, 2.6rem);
+  line-height: 1.15;
+}
+
+.timeline-intro {
+  max-width: 56ch;
+  margin: 0 auto;
+  color: #3a2a4a;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 1rem;
+  position: relative;
+  display: grid;
+  gap: 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #ad88c6, #dfccfb);
+  border-radius: 999px;
+}
+
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 0 2rem;
+  margin-bottom: 2rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-axis {
+  position: absolute;
+  left: 50%;
+  top: 1.35rem;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.timeline-dot {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ad88c6;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 2px #cfb9e1;
+}
+
+.timeline-item--left .timeline-card {
+  grid-column: 1;
+  justify-self: end;
+  text-align: right;
+}
+
+.timeline-item--right .timeline-card {
+  grid-column: 2;
+  justify-self: start;
+  text-align: left;
+}
+
+.timeline-card {
+  max-width: 380px;
+  background: #ffffff;
+  border: 1px solid #eadff4;
+  border-radius: 14px;
+  padding: 1.15rem 1.25rem;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-4px);
+  border-color: #cfb9e1;
+  box-shadow: 0 12px 28px rgba(76, 42, 99, 0.12);
+}
+
+.timeline-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-item--left .timeline-card-meta {
+  justify-content: flex-end;
+}
+
+.timeline-item--right .timeline-card-meta {
+  justify-content: flex-start;
+}
+
+.timeline-date {
+  font-weight: 800;
+  color: #4c2a63;
+  font-size: 0.95rem;
+}
+
+.timeline-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: #f3ecfa;
+  color: #4c2a63;
+  border: 1px solid #e5d4f2;
+}
+
+.timeline-pill--milestone {
+  background: rgba(173, 136, 198, 0.2);
+  border-color: #c9a8de;
+}
+
+.timeline-pill--workshop {
+  background: rgba(223, 204, 251, 0.55);
+  border-color: #c4aee8;
+}
+
+.timeline-pill--event {
+  background: #ffffff;
+  border-color: #ad88c6;
+}
+
+.timeline-card-title {
+  margin: 0 0 0.45rem;
+  font-size: 1.15rem;
+  color: #231f2b;
+}
+
+.timeline-card-body {
+  margin: 0;
+  color: #3a2a4a;
+  font-size: 0.98rem;
+}
+
+.coming-soon-main {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+  text-align: center;
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+}
+
+.coming-soon-main h1 {
+  margin: 0;
+}
+
+.coming-soon-main p {
+  margin: 0;
+  color: #3a2a4a;
+}
+
+/* —— Meet the team page —— */
+
+.team-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.team-hero {
+  text-align: center;
+  background: #dfccfb;
+  border-radius: 18px;
+  padding: 2rem 1.5rem;
+}
+
+.team-hero h1 {
+  margin: 0.35rem 0 0.75rem;
+  font-size: clamp(1.85rem, 4vw, 2.6rem);
+  line-height: 1.15;
+}
+
+.team-intro {
+  max-width: 56ch;
+  margin: 0 auto;
+  color: #3a2a4a;
+}
+
+.team-story {
+  background: #ffffff;
+  border: 1px solid #eadff4;
+  border-radius: 14px;
+  padding: 1.75rem 1.5rem;
+}
+
+.team-story h2 {
+  margin: 0 0 1rem;
+  font-size: 1.35rem;
+  color: #4c2a63;
+}
+
+.team-story-body {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  color: #3a2a4a;
+}
+
+.team-story-body p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.team-officers h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  color: #4c2a63;
+  text-align: center;
+}
+
+.team-grid {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.team-card {
+  background: #ffffff;
+  border: 1px solid #eadff4;
+  border-radius: 14px;
+  padding: 1.25rem;
+  height: 100%;
+  display: grid;
+  gap: 0.5rem;
+  justify-items: center;
+  text-align: center;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  border-color: #cfb9e1;
+  box-shadow: 0 12px 28px rgba(76, 42, 99, 0.12);
+}
+
+.team-card-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 2px #cfb9e1;
+}
+
+.team-card-photo--placeholder {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #ad88c6, #dfccfb);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.75rem;
+  letter-spacing: 0.02em;
+}
+
+.team-card-name {
+  margin: 0.35rem 0 0;
+  font-size: 1.1rem;
+  color: #231f2b;
+}
+
+.team-card-role {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #4c2a63;
+}
+
+.team-card-bio {
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+  color: #3a2a4a;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .timeline::before {
+    left: 10px;
+    transform: none;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    padding-left: 2.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-axis {
+    left: 10px;
+    transform: translateX(-50%);
+  }
+
+  .timeline-item--left .timeline-card,
+  .timeline-item--right .timeline-card {
+    grid-column: 1;
+    justify-self: stretch;
+    max-width: none;
+    text-align: left;
+  }
+
+  .timeline-item--left .timeline-card-meta,
+  .timeline-item--right .timeline-card-meta {
+    justify-content: flex-start;
+  }
+}
